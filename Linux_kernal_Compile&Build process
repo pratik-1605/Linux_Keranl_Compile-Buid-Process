@@ -1,0 +1,52 @@
+Step 1: Download The Source Code
+
+2. Open the terminal and use the wget command to download the Linux kernel source code:
+
+command// wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.7.tar.xz
+
+Step 2: Extract the Source Code
+
+commad// tar xvf linux-6.0.7.tar.xz
+
+Step 3: Install Required Packages
+
+command//  sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison
+
+The command we used above installs the following packages:
+
+Package	        Package description
+git	               Tracks and makes a record of all changes during development in the source code. It also allows reverting the changes.
+fakeroot	        Creates the fake root environment.
+build-essential	Installs development tools such as C, C++, gcc, and g++.
+ncurses-dev	        Provides API for the text-based terminals.
+xz-utils	        Provides fast file compression and decompression.
+libssl-dev	        Supports SSL and TSL that encrypt data and make the internet connection secure.
+bc (Basic Calculator)	 Supports the interactive execution of statements.
+flex (Fast Lexical Analyzer Generator)	Generates lexical analyzers that convert characters into tokens.
+libelf-dev	       Issues a shared library for managing ELF files (executable files, core dumps and object code)
+bison	                Converts grammar description to a C program.
+
+Step 4: Configure Kernel
+
+The Linux kernel source code comes with the default configuration. However, you can adjust it to your needs. To do so, follow the steps below:
+
+1. Navigate to the linux-6.0.7 directory using the cd command:
+cd linux-6.0.7
+
+2. Copy the existing configuration file using the cp command:
+cp -v /boot/config-$(uname -r) .config
+
+
+3. To make changes to the configuration file, run the make command:
+
+make menuconfig  
+The command launches several scripts that open the configuration menu:
+
+
+4. The configuration menu includes options such as firmware, file system, network, and memory settings. Use the arrows to make a selection or choose Help to learn more about the options. When you finish making the changes, select Save, and then exit the menu.
+
+
+
+Step 5: Build the Kernel
+make
+
